@@ -1,3 +1,5 @@
+using System.IO;
+
 //Encoder
 
 //Create an Image object from File
