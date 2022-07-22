@@ -1,0 +1,27 @@
+//Encoder
+
+//Create an Image object from File
+Image image = Image.FromFile(@"C:\\Users\\ui471f\\Documents\\duck.png");
+
+//Create a MemoryStream
+var ms = new MemoryStream(); //This is where we deposit the bytes
+
+//save bytes to ms
+image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+//to get the bytes we type
+var bytes = ms.ToArray();
+
+//we can now save the byte array to a db, file, or transport (stream) it
+
+
+
+//Decoder
+
+//we need to create a MemoryStream with byte array
+var imageMemoryStream = new MemoryStream(bytes);
+
+//now we create an image from Stream
+Image imgFromStream = Image.FromStream(imageMemoryStream);
+
+pictureBox1.Image = imgFromStream;
