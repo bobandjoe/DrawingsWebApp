@@ -1,4 +1,4 @@
-﻿using DrawingsWebApp.Models;
+using DrawingsWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,6 +6,20 @@ namespace DrawingsWebApp.Controllers
 {
     public class HomeController : Controller
     {
+
+        string userMode = "engineer";
+
+
+        public Boolean isEngineer()
+        {
+            if (userMode == "engineer")
+                return true;
+
+            return false;
+        }
+
+
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -28,5 +42,15 @@ namespace DrawingsWebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
+
+
+
+        [HttpPost]
+        public IActionResult Index(string userSelect)
+        {
+            userMode = userSelect;
+            
+            return View();
+
+        }
 }
