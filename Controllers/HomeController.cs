@@ -7,19 +7,6 @@ namespace DrawingsWebApp.Controllers
     public class HomeController : Controller
     {
 
-        string userMode = "engineer";
-
-
-        public Boolean isEngineer()
-        {
-            if (userMode == "engineer")
-                return true;
-
-            return false;
-        }
-
-
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -29,6 +16,7 @@ namespace DrawingsWebApp.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.UserModes = "engineer";
             return View();
         }
 
@@ -44,13 +32,15 @@ namespace DrawingsWebApp.Controllers
         }
 
 
-
         [HttpPost]
-        public IActionResult Index(string userSelect)
+        public IActionResult Index(FormModel myForm)
         {
-            userMode = userSelect;
-            
+            var selectedValue = myForm.currentUserMode;
+            ViewBag.UserModes = selectedValue.ToString();
             return View();
-
         }
+
+
+        
+    }
 }
