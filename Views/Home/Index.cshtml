@@ -1,8 +1,48 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
+@model FormModel
+
+<div id="UserModeForm">
+                                
+        @using (Html.BeginForm("Index","Home",FormMethod.Post))
+        {
+            @Html.DropDownList("currentUserMode",new SelectList(Enum.GetValues(typeof(UserModes))), new { @onchange = @"form.submit();"})
+        }
+    </div>
+    <p>You are currently in @ViewBag.UserModes mode</p>
+
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image Preview</th>
+                <th>Image Title</th>
+                <th>Comments</th>
+                <th>Edit Button</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    
+                    <button type="button" id="image1button" >
+                        <img src=https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-eaglebirdsflyanimals-631522936787gghpi.png&f=1&nofb=1 height="50" width="50"/>
+                    </button>
+                </td>
+                <td>
+                    image name
+                </td>
+                <td>
+                    image comments
+                </td>
+                <td>
+                    edit button
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
 </div>
