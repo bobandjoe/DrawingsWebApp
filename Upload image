@@ -54,6 +54,9 @@ namespace FilePopup2
 
                 this.image.Image = imgFromStream;
                 fileLocation.Text = ofd.FileName;
+                
+                //The encoder and decoder stuff is just to check if the conversion to byte array still works
+                // can replace this.image.Image = imgFromStream; with this.image.Image = Image.FromFile(ofd.FileName);
             }
         }
 
