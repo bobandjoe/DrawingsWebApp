@@ -4,7 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index Drawing</h1>
+<div class ="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Drawings</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Drawing" asp-action="Upload" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Upload Drawing
+            </a>
+        </div>
+    </div>
+</div>
 
 <table class="table table-bordered table-striped" style="width:100%">   
     <thead>
@@ -33,7 +44,7 @@
                 <td width="20%">
                     @obj.Image
                 </td>
-                <td width="40%">
+                <td width="30%">
                     @obj.Comment
                 </td>
                 <td width="25%">

@@ -9,8 +9,9 @@ namespace DrawingsWebApp.Models
         public int Id { get; set; }
         [Required]
         public string FileName { get; set; }
-        public string Comment { get; set; }
-        public string Image { get; set; }
+        public string Comment { get; set; } = "";
+        [Required]
+        public byte[] Image { get; set; }
         public DateTime UploadedDateTime { get; set; } = DateTime.Now;
 
     }
