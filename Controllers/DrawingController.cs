@@ -1,6 +1,7 @@
 ﻿using DrawingsWebApp.Data;
 using DrawingsWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Web;
 
 namespace DrawingsWebApp.Controllers
 {
@@ -19,6 +20,13 @@ namespace DrawingsWebApp.Controllers
             return View(objDrawingList);
         }
 
+        public IActionResult RenderImage(int id)
+        {
+            Drawing drawing = _db.Drawings.Find(id);
+            byte[] byteData = drawing.Image;
+            return File(byteData, "image/png");
+        }
+
         //GET
         public IActionResult Upload()
         {
@@ -34,7 +42,7 @@ namespace DrawingsWebApp.Controllers
             {
                 FileName = model.FileName
             };
-            
+
             //Convert the image into bytes array type
             using (MemoryStream ms = new MemoryStream())
             {
@@ -48,5 +56,6 @@ namespace DrawingsWebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
     }
 }

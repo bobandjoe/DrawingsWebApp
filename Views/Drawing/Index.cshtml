@@ -42,7 +42,7 @@
                     @obj.FileName
                 </td>
                 <td width="20%">
-                    @obj.Image
+                    <img height="100" src="@Url.Action("RenderImage", new { id = obj.Id })" />
                 </td>
                 <td width="30%">
                     @obj.Comment
