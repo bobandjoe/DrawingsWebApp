@@ -1,0 +1,28 @@
+﻿@model Drawing
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="test-primary">Delete Drawing</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <h5 class="">Confirm deletion of @Model.FileName:</h5>
+        </div>
+        <div class="mb-3">
+            <img width="100%" src="@Url.Action("RenderImage", new { id = Model.Id })" />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Confirm Delete</button>
+        <a asp-controller="Drawing" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to Drawings
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{ 
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

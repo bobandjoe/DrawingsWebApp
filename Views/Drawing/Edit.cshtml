@@ -1,9 +1,9 @@
-﻿@model DrawingVm
+﻿@model Drawing
 
-<form method="post" enctype="multipart/form-data" asp-action="Upload">
+<form method="post" asp-action="Edit">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="test-primary">Upload Drawing</h2>
+            <h2 class="test-primary">Edit Name</h2>
             <hr />
         </div>
         <div class="mb-3">
@@ -11,12 +11,7 @@
             <input asp-for="FileName" class="form-control" />
             <span asp-validation-for="FileName" class="text-danger"></span>
         </div>
-        <div class="mb-3">
-            <label asp-for="Image"></label>
-            <input asp-for="Image" class="form-control" type="file" />
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Upload</button>
+        <button type="submit" class="btn btn-primary" style="width:150px">Save Changes</button>
         <a asp-controller="Drawing" asp-action="Index" class="btn btn-secondary" style="width:150px">
             Back to Drawings
         </a>
@@ -24,7 +19,7 @@
 </form>
 
 @section Scripts{
-    @{
+    @{ 
         <partial name="_ValidationScriptsPartial" />
     }
 }

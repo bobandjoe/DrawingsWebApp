@@ -26,12 +26,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Drawing" asp-action="Index">Drawings</a>
                         </li>
-                        <li class="nav-item dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true">
-                            <a class="nav-link text-dark dropdown-toggle">Role Select</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Engineer</a>
-                                <a class="dropdown-item" href="#">Writer</a>
-                            </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" id="roleSelect" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                                Role Select
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="roleSelect">
+                                <li><a class="dropdown-item" href="#">Engineer</a></li>
+                                <li><a class="dropdown-item" href="#">Writer</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

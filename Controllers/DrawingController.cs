@@ -38,23 +38,91 @@ namespace DrawingsWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upload(DrawingVm model)
         {
-            Drawing drawing = new Drawing
+            if (ModelState.IsValid)
             {
-                FileName = model.FileName
-            };
+                Drawing drawing = new Drawing
+                { 
+                    FileName = model.FileName
+                };
 
-            //Convert the image into bytes array type
-            using (MemoryStream ms = new MemoryStream())
-            {
-                await model.Image.CopyToAsync(ms);
-                drawing.Image = ms.ToArray();
+                //Convert the image into bytes array type
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    await model.Image.CopyToAsync(ms);
+                    drawing.Image = ms.ToArray();
+                }
+
+                //Add to database
+                _db.Drawings.Add(drawing);
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction("Index");
             }
-                
-            //Add to database
-            _db.Drawings.Add(drawing);
-            await _db.SaveChangesAsync();
+            return View(model);
+        }
+
+        //GET
+        public IActionResult Edit(int? id)
+        {
+            if(id==null || id.Value == 0)
+            {
+                return NotFound();
+            }
+            var drawingFromDb = _db.Drawings.Find(id);
+
+            if (drawingFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(drawingFromDb);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Drawing model)
+        {
+            _db.Drawings.Attach(model);
+            _db.Entry(model).Property(x => x.FileName).IsModified = true;
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
+
+        }
+
+        //GET
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id.Value == 0)
+            {
+                return NotFound();
+            }
+            var drawingFromDb = _db.Drawings.Find(id);
+
+            if (drawingFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(drawingFromDb);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePOST(int? id)
+        {
+            var model = _db.Drawings.Find(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            _db.Drawings.Remove(model);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+
         }
 
     }
