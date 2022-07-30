@@ -55,6 +55,7 @@ namespace DrawingsWebApp.Controllers
                 //Add to database
                 _db.Drawings.Add(drawing);
                 await _db.SaveChangesAsync();
+                TempData["success"] = "Drawing uploaded successfully";
 
                 return RedirectToAction("Index");
             }
@@ -86,6 +87,7 @@ namespace DrawingsWebApp.Controllers
             _db.Drawings.Attach(model);
             _db.Entry(model).Property(x => x.FileName).IsModified = true;
             _db.SaveChanges();
+            TempData["success"] = "Drawing name updated successfully";
 
             return RedirectToAction("Index");
 
@@ -120,6 +122,7 @@ namespace DrawingsWebApp.Controllers
             }
             _db.Drawings.Remove(model);
             _db.SaveChanges();
+            TempData["success"] = "Drawing deleted successfully";
 
             return RedirectToAction("Index");
 

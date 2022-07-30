@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+@if(TempData["success"] != null)
+{
+    <p class="text-success">@TempData["success"]</p>
+}
+
 <div class ="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -21,13 +26,10 @@
     <thead>
         <tr>
             <th>
-                File Name
+                Name
             </th>
             <th>
                 Image
-            </th>
-            <th>
-                Comment
             </th>
             <th>
                 Date and Time Uploaded
@@ -39,19 +41,16 @@
         @foreach(var obj in Model)
         {
             <tr>
-                <td width="15%">
+                <td width="20%">
                     @obj.FileName
                 </td>
-                <td width="20%">
+                <td>
                     <img height="100" src="@Url.Action("RenderImage", new { id = obj.Id })" />
                 </td>
                 <td width="20%">
-                    @obj.Comment
-                </td>
-                <td width="25%">
                     @obj.UploadedDateTime
                 </td>
-                <td>
+                <td width="25%">
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Drawing" asp-action="Edit" asp-route-id="@obj.Id"
                         class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Edit Name</a>
