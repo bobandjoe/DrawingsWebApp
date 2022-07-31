@@ -23,17 +23,26 @@
             <th>
                 Comments
             </th>
+            <th>
+                Date and Time Posted
+            </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (String comment in Model.Comment.Split("@#$%&")) 
+        <tr>
+            @foreach (String comment in Model.Comment.Split("@#$%&")) 
             {
-            <tr>
                 <td>
                     @comment
                 </td>
-            </tr>
-        }
+            }
+            @foreach (String commentDateTime in Model.CommentDateTime.Split("@#$%&")) 
+            {
+                <td>
+                    @commentDateTime
+                </td>
+            }
+        </tr>
     </tbody>
 </table>
 

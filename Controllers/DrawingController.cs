@@ -64,22 +64,28 @@ namespace DrawingsWebApp.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateComment(Drawing model, string commentString)
+        public IActionResult CreateComment(Drawing model, string commentString, string dateTimeString)
         {
             if (commentString == null)
             {
                 model.Comment = model.FormComment;
+                model.CommentDateTime = model.FormCommentDateTime.ToString();
             } 
             else
             {
                 string[] comments = commentString.Split("@#$%&");
+                string[] dateTimes = dateTimeString.Split("@#$%&");
                 string[] updatedComments = new string[comments.Length + 1];
+                string[] updatedDateTimes = new string[dateTimes.Length + 1];
                 for (int i = 0; i < comments.Length; i++)
                 {
                     updatedComments[i] = comments[i];
+                    updatedDateTimes[i] = dateTimes[i];
                 }
                 updatedComments[updatedComments.Length - 1] = model.FormComment;
+                updatedDateTimes[updatedDateTimes.Length - 1] = model.FormCommentDateTime.ToString();
                 model.Comment = String.Join("@#$%&", updatedComments);
+                model.CommentDateTime = String.Join("@#$%&", updatedDateTimes);
             }
             _db.Drawings.Attach(model);
             _db.Entry(model).Property(x => x.Comment).IsModified = true;

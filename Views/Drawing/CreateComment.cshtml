@@ -1,6 +1,7 @@
 ﻿@model Drawing
 @{
     string commentString = Model.Comment;
+    string dateTimeString = Model.CommentDateTime;
 }
 
 <form method="post" asp-action="CreateComment" asp-route-commentString="@commentString">
