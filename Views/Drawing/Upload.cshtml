@@ -1,4 +1,4 @@
-﻿@model DrawingVm
+﻿@model Drawing
 
 <form method="post" enctype="multipart/form-data" asp-action="Upload">
     <div class="border p-3 mt-4">
@@ -12,9 +12,9 @@
             <span asp-validation-for="FileName" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Image"></label>
-            <input asp-for="Image" class="form-control" type="file" />
-            <span asp-validation-for="Image" class="text-danger"></span>
+            <label asp-for="FormImage"></label>
+            <input asp-for="FormImage" class="form-control" type="file" />
+            <span asp-validation-for="FormImage" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Upload</button>
         <a asp-controller="Drawing" asp-action="Index" class="btn btn-secondary" style="width:150px">

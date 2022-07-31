@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DrawingsWebApp.Models
 {
@@ -14,6 +15,12 @@ namespace DrawingsWebApp.Models
         [Required]
         public byte[] Image { get; set; }
         public DateTime UploadedDateTime { get; set; } = DateTime.Now;
+        [NotMapped]
+        [Display(Name = "Name")]
+        public IFormFile FormImage { get; set; }
+        [NotMapped]
+        [Display(Name = "Comment")]
+        public string FormComment { get; set; }
 
     }
 }

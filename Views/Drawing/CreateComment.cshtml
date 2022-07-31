@@ -1,0 +1,29 @@
+﻿@model Drawing
+@{
+    string commentString = Model.Comment;
+}
+
+<form method="post" asp-action="CreateComment" asp-route-commentString="@commentString">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="test-primary">Create Comment</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="FormComment"></label>
+            <input asp-for="FormComment" class="form-control" />
+            <span asp-validation-for="FormComment" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Add Comment</button>
+        <a asp-controller="Drawing" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to Drawings
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{ 
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
