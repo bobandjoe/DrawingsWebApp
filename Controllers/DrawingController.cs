@@ -60,7 +60,7 @@ namespace DrawingsWebApp.Controllers
 
             return View(drawingFromDb);
         }
-
+         
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
