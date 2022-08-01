@@ -12,15 +12,18 @@ namespace DrawingsWebApp.Models
         [Display(Name = "Name")]
         public string FileName { get; set; }
         public string Comment { get; set; } = "";
+        public string CommentDateTime { get; set; } = "";
         [Required]
         public byte[] Image { get; set; }
         public DateTime UploadedDateTime { get; set; } = DateTime.Now;
         [NotMapped]
-        [Display(Name = "Name")]
+        [Display(Name = "Drawing File")]
         public IFormFile FormImage { get; set; }
         [NotMapped]
         [Display(Name = "Comment")]
         public string FormComment { get; set; }
+        [NotMapped]
+        public DateTime FormCommentDateTime { get; set; } = DateTime.Now;
 
     }
 }

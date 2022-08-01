@@ -23,15 +23,26 @@
             <th>
                 Comments
             </th>
+            <th>
+                Date and Time Posted
+            </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (String comment in Model.Comment.Split("@#$%&")) 
-            {
+        @{
+            string[] comments = Model.Comment.Split("@#$%&");
+            string[] dateTimes = Model.CommentDateTime.Split("@#$%&");
+        }
+        @for(int i = 0; i < comments.Length; i++)
+        {
             <tr>
                 <td>
-                    @comment
+                    @comments[i]
                 </td>
+                <td width="20%">
+                    @dateTimes[i]
+                </td>
+                
             </tr>
         }
     </tbody>
@@ -41,7 +52,7 @@
 
 @section Scripts{
     @{ 
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
     }
 }
 

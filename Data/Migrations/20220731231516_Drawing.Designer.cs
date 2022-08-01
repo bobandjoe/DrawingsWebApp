@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrawingsWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220725220150_AddDrawingToDatabase")]
-    partial class AddDrawingToDatabase
+    [Migration("20220731231516_Drawing")]
+    partial class Drawing
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,10 @@ namespace DrawingsWebApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommentDateTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
