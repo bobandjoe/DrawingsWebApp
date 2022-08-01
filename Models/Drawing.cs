@@ -17,7 +17,7 @@ namespace DrawingsWebApp.Models
         public byte[] Image { get; set; }
         public DateTime UploadedDateTime { get; set; } = DateTime.Now;
         [NotMapped]
-        [Display(Name = "Name")]
+        [Display(Name = "Drawing File")]
         public IFormFile FormImage { get; set; }
         [NotMapped]
         [Display(Name = "Comment")]
