@@ -89,6 +89,7 @@ namespace DrawingsWebApp.Controllers
             }
             _db.Drawings.Attach(model);
             _db.Entry(model).Property(x => x.Comment).IsModified = true;
+            _db.Entry(model).Property(x => x.CommentDateTime).IsModified = true;
             _db.SaveChanges();
             TempData["success"] = "Comment added successfully";
 

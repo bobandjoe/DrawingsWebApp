@@ -12,7 +12,7 @@ namespace DrawingsWebApp.Models
         [Display(Name = "Name")]
         public string FileName { get; set; }
         public string Comment { get; set; } = "";
-        public string CommentDateTime { get; set; }
+        public string CommentDateTime { get; set; } = "";
         [Required]
         public byte[] Image { get; set; }
         public DateTime UploadedDateTime { get; set; } = DateTime.Now;
